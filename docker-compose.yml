@@ -1,0 +1,21 @@
+version: '3'
+services:
+  php:
+    image: php:8.0-apache
+    ports:
+      - 8000:80
+    volumes:
+      - ./public:/var/www/html
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0
+    ports:
+      - 3320:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=zepto
+      - MYSQL_USER=zepto
+      - MYSQL_PASSWORD=zepto
+    volumes:
+      - ./mysql:/var/lib/mysql
