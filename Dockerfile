@@ -5,3 +5,6 @@ RUN a2enmod rewrite
 
 # Copy the Apache configuration file with mod_rewrite enabled
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+# Restart Apache
+RUN service apache2 restart
