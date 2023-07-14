@@ -21,6 +21,10 @@ class Router
      */
     public function get(string $path, mixed $callback): void
     {
+        if (empty($path)) {
+            $path = '/';
+        }
+
         $this->routes['get'][$path] = $callback;
     }
 
@@ -36,11 +40,16 @@ class Router
     }
 
     /**
-     *
-     * @return void
+     * Compile the closure given as the callback
+     * @return mixed
      */
-    public function resolve()
+    public function resolve(): mixed
     {
-        var_dump($this->request->getPath());
+        $path = $this->request->getPath();
+        $method = $this->request->getMethod();
+
+        $callback = $this->routes[$method][$path];
+
+        return call_user_func($callback);
     }
 }

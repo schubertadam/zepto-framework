@@ -15,4 +15,12 @@ class Request
 
         return $position ? substr($path, 0, $position): $path;
     }
+
+    /**
+     * Get the currently active method type
+     * @return string
+     */
+    public function getMethod(): string {
+        return strtolower($_SERVER['REQUEST_METHOD']);
+    }
 }
