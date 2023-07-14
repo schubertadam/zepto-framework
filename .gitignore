@@ -5,3 +5,4 @@ mysql
 .idea/vcs.xml
 .idea/zepto-framework.iml
 .idea/.gitignore
+/vendor
